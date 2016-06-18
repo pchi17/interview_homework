@@ -14,6 +14,6 @@ FactoryGirl.define do
   factory :homework do
     title    { Faker::Lorem.sentence(3, false, 0) }
     question { Faker::Lorem.sentence(6, false, 0) }
-    due_date { Faker::Date.backward }
+    due_date { Faker::Date.forward(30) }
   end
 end
