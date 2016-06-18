@@ -5,6 +5,6 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string     :answer,     null: false
       t.datetime   :created_at, null: false
     end
-    add_foreign_key :submissions,:assignments, on_delete: :cascade
+    add_foreign_key :submissions, :assignments, on_delete: :cascade
   end
 end
