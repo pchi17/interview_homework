@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529213510) do
+ActiveRecord::Schema.define(version: 20160618215853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "homework_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "assignments", ["user_id", "homework_id"], name: "index_assignments_on_user_id_and_homework_id", unique: true, using: :btree
+
+  create_table "homeworks", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "question",   null: false
+    t.date     "due_date",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "assignment_id", null: false
+    t.text     "answer",        null: false
+    t.datetime "created_at",    null: false
+  end
+
+  add_index "submissions", ["assignment_id", "answer"], name: "index_submissions_on_assignment_id_and_answer", unique: true, using: :btree
+  add_index "submissions", ["assignment_id"], name: "index_submissions_on_assignment_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",   null: false
@@ -25,4 +51,7 @@ ActiveRecord::Schema.define(version: 20150529213510) do
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "assignments", "homeworks", on_delete: :cascade
+  add_foreign_key "assignments", "users", on_delete: :cascade
+  add_foreign_key "submissions", "assignments", on_delete: :cascade
 end
