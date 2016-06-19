@@ -11,5 +11,15 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe Teachers::HomeworksHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#print_due_date' do
+    context 'when due date is at least 1 week in the future' do
+      it { expect(print_due_date(2.weeks.from_now).include?('text-success')).to be(true) }
+    end
+    context 'when due date is within 1 week' do
+      it { expect(print_due_date(2.days.from_now).include?('text-warning')).to be(true) }
+    end
+    context 'when due date is in the past' do
+      it { expect(print_due_date(1.day.ago).include?('text-danger')).to be(true) }
+    end
+  end
 end

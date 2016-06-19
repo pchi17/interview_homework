@@ -11,5 +11,13 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe Students::SubmissionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#print_submission_time' do
+    let(:due_date) { Date.today }
+    context 'when submission time is before due_date' do
+      it { expect(print_submission_time(1.day.ago, due_date).include?('text-success')).to be true }
+    end
+    context 'when submission time is after due_date' do
+      it { expect(print_submission_time(1.day.from_now, due_date).include?('text-danger')).to be true }
+    end
+  end
 end

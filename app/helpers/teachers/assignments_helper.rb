@@ -1,2 +1,0 @@
-module Teachers::AssignmentsHelper
-end
