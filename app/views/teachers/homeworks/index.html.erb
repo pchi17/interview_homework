@@ -16,7 +16,7 @@
               <%= h.title %>
             </td>
             <td class="text-danger">
-              <%= h.due_date %>
+              <%= print_due_date(h.due_date) %>
             </td>
             <td>
               <%= link_to h.student_count, teachers_homework_assignments_path(h) %>

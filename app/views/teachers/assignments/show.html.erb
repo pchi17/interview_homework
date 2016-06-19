@@ -1,5 +1,6 @@
 <%= render_page_header("#{@submissions.count} submissions") %>
-<%= render partial: 'teachers/assignments/homework' %>
+<%= link_to '<< back to homework page', teachers_homework_assignments_path(@homework) %>
+<%= render partial: 'students/submissions/homework' %>
 <h3><%= @student.username %></h3>
 <div class="row">
   <div class="col-md-12">
@@ -16,7 +17,7 @@
           <tr>
             <td><%= s.id %></td>
             <td><%= s.answer %></td>
-            <td><%= s.created_at %></td>
+            <td><%= print_submission_time(s.created_at, @homework.due_date) %></td>
           </tr>
         <% end %>
       </tbody>
