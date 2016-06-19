@@ -1,11 +1,14 @@
 <%= render_page_header("#{@submissions.count} submissions") %>
 
 <%= link_to 'view assignments', students_assignments_path, class: 'btn btn-primary' %>
-<%= link_to '+ new submission', new_students_assignment_submission_path(@assignment), class: 'btn btn-primary' %>
+<%= link_to '+ new submission', new_students_assignment_submission_path(@assignment), class: 'btn btn-primary new-submission-btn' %>
+<button type="button" name="button" class="btn btn-primary tmp-hidden show-submissions-btn">
+  show submissions
+</button>
 
 <%= render partial: 'students/submissions/homework' %>
 
-<div class="row">
+<div class="row submissions-row">
   <div class="col-md-12">
     <table class="table">
       <thead>
@@ -14,10 +17,15 @@
           <td>Submission Date</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="submissions-tbody">
         <%= render @submissions %>
       </tbody>
     </table>
     <%= will_paginate @submissions %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 tmp-hidden new-submission-form-col">
+    <%= render partial: 'students/submissions/new_submission_form' %>
   </div>
 </div>
