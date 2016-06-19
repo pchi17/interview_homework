@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'welcome/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'welcome#home'
 
   get   'login',  to: 'sessions#new',     as: 'login'
   post  'login',  to: 'sessions#create',  as: 'session'
   match 'logout', to: 'sessions#destroy', as: 'logout', via: [:get, :delete]
   
-  namespace :teacher do
+  namespace :teachers do
     resources :homeworks, only: :index do
       resources :users, only: [:index, :show]
     end

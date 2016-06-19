@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
 
   # Private: Ensures User is logged in.
   def authorize
-    if not current_user
-      redirect_to login_url
+    if current_user.nil?
+      redirect_to login_path
     end
   end
 
@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find(session[:user_id])
   end
   helper_method :current_user
+  
+  private
+    def logout
+      session[:user_id] = nil
+      redirect_to login_path
+    end
 end
