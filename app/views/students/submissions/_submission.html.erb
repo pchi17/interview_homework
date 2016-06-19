@@ -1,4 +1,4 @@
 <tr>
   <td><%= submission.answer %></td>
-  <td><%= submission.created_at %></td>
+  <td><%= print_submission_time(submission.created_at, @homework.due_date) %></td>
 </tr>

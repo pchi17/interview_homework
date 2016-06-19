@@ -1,6 +1,10 @@
 <%= render_page_header('new submission') %>
+
+<%= link_to 'view assignments', students_assignments_path, class: 'btn btn-primary' %>
+<%= link_to 'view submissions', students_assignment_submissions_path(@assignment), class: 'btn btn-primary' %>
+
 <%= render partial: 'students/submissions/homework' %>
-<hr>
+
 <div class="row">
   <div class="col-md-12">
     <%= render partial: 'students/submissions/new_submission_form' %>

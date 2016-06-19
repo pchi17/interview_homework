@@ -15,3 +15,23 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.page-header {
+  margin: 10px 0;
+}
+
+.row {
+  margin: 10px 0;
+}
+
+thead {
+  font-weight: bold;
+}
+
+.date {
+  font-family: monospace;
+}
+
+.homework-details {
+  padding: 5px 0;
+}

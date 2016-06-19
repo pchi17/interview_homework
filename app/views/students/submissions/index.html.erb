@@ -1,5 +1,10 @@
 <%= render_page_header("#{@submissions.count} submissions") %>
+
+<%= link_to 'view assignments', students_assignments_path, class: 'btn btn-primary' %>
+<%= link_to '+ new submission', new_students_assignment_submission_path(@assignment), class: 'btn btn-primary' %>
+
 <%= render partial: 'students/submissions/homework' %>
+
 <div class="row">
   <div class="col-md-12">
     <table class="table">

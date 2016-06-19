@@ -7,7 +7,7 @@
         <tr>
           <td>Homework</td>
           <td>Due Date</td>
-          <td>Actions</td>
+          <td class="text-right"></td>
         </tr>
       </thead>
       <tbody>
@@ -16,14 +16,12 @@
             <td>
               <%= a.homework.title %>
             </td>
-            <td class="text-danger">
-              <%= a.homework.due_date %>
-            </td>
             <td>
-              <div class="btn-group">
-                <%= link_to 'view submissions', students_assignment_submissions_path(a), class: 'btn btn-info' %>
-                <%= link_to '+ new submission', new_students_assignment_submission_path(a), class: 'btn btn-success'%>
-              </div>
+              <%= print_due_date(a.homework.due_date) %>
+            </td>
+            <td class="text-right">
+              <%= link_to 'view submissions', students_assignment_submissions_path(a), class: 'btn btn-primary' %>
+              <%= link_to '+ new submission', new_students_assignment_submission_path(a), class: 'btn btn-primary'%>
             </td>
           </tr>
         <% end %>
