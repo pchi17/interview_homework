@@ -1,11 +1,12 @@
 # Edmodo Interview Homework
 
-This repository contains a bare-bone application including basic authentication.
-
 # To Run the application
 
-Make sure you have Ruby (2.2 or above) and Bundler installed.
+This app is built using Ruby 2.3.1
+Make sure Bundler is installed.
 
+I use Postgres for my local dev environment.
+However, this app should work with similar databases.
 To set up the database, run
 
 ```console```
@@ -13,7 +14,7 @@ bundle install
 rake db:reset
 ```
 
-This will set up the database and it also create 2 users: 'teacher' and 'student'.
+This will set up the database and it also create 2 users: 'philip' and 'mike'.
 
 To start the web server, run
 
@@ -23,6 +24,6 @@ bundle exec rails server
 
 Open your web browser and go to http://localhost:3000
 
-You can log in as a teacher by using 'teacher' as the username and log in as a student by using 'student' as the username.
-
-Good Luck!
+You can log in as a teacher by using 'philip' as the username.
+I have generated a sequence of users, their usernames have the format 'student_x', where x is a number.
+For example, you can log in as a student by using 'student_0' as the username.
