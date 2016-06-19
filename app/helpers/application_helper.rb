@@ -4,4 +4,10 @@ module ApplicationHelper
       content_tag :h1, header.capitalize
     end
   end
+  
+  def render_error_messages(obj)
+    if obj.errors.any?
+      render 'shared/error_messages', object: obj
+    end
+  end
 end

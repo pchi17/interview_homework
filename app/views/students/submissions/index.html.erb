@@ -1,0 +1,18 @@
+<%= render_page_header("#{@submissions.count} submissions") %>
+<%= render partial: 'students/submissions/homework' %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Answer</td>
+          <td>Submission Date</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @submissions %>
+      </tbody>
+    </table>
+    <%= will_paginate @submissions %>
+  </div>
+</div>

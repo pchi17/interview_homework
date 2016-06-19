@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   end
   
   namespace :students do
-    resources :assignments, only: [:index, :show] do
-      resources :submissions, only: [:new, :create]
+    resources :assignments, only: :index do
+      resources :submissions, only: [:index, :new, :create]
     end
   end
 

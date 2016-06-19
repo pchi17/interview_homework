@@ -21,8 +21,8 @@ RSpec.describe WelcomeController, type: :controller do
     end
     
     context 'when a student is logged in' do
-      let(:teacher) {FactoryGirl.create(:student)}
-      let(:valid_session) {{user_id: teacher.id}}
+      let(:student) {FactoryGirl.create(:student)}
+      let(:valid_session) {{user_id: student.id}}
       it "returns redirect_to students_assignments_path" do
         get :home, {}, valid_session
         expect(response).to redirect_to students_assignments_path
