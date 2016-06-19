@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   namespace :teachers do
     resources :homeworks, only: :index do
-      resources :users, only: [:index, :show]
+      resources :assignments, only: [:index, :show]
     end
   end
   

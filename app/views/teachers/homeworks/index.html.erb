@@ -1,0 +1,30 @@
+<%= render_page_header("#{@homeworks.count} homeworks") %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Homework</td>
+          <td>Due Date</td>
+          <td>Students Assigned</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @homeworks.each do |h| %>
+          <tr>
+            <td>
+              <%= h.title %>
+            </td>
+            <td class="text-danger">
+              <%= h.due_date %>
+            </td>
+            <td>
+              <%= link_to h.student_count, teachers_homework_assignments_path(h) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @homeworks %>
+  </div>
+</div>

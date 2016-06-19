@@ -1,0 +1,26 @@
+<%= render_page_header("#{@submissions.count} submissions") %>
+<%= render partial: 'teachers/assignments/homework' %>
+<h3><%= @student.username %></h3>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Answer ID</td>
+          <td>Answer</td>
+          <td>Time Submitted</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @submissions.each do |s| %>
+          <tr>
+            <td><%= s.id %></td>
+            <td><%= s.answer %></td>
+            <td><%= s.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @submissions %>
+  </div>
+</div>

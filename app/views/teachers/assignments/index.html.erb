@@ -1,0 +1,25 @@
+<%= render_page_header("#{@assignments.count} assignments") %>
+<%= render partial: 'teachers/assignments/homework' %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Username</td>
+          <td>Latest Answer</td>
+          <td>Time Submitted</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @assignments.each do |a| %>
+          <tr>
+            <td><%= link_to a.user.username, teachers_homework_assignment_path(@homework, a) %></td>
+            <td><%= a.latest_submission.answer %></td>
+            <td><%= a.latest_submission.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @assignments %>
+  </div>
+</div>
